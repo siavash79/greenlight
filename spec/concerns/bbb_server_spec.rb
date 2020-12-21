@@ -66,8 +66,9 @@ describe BbbServer do
       join_via_html5 = "&join_via_html5=true"
       meeting_id = "&meetingID=#{@room.bbb_id}"
       password = "&password=#{@room.attendee_pw}"
+      gam_params = "&userdata-bbb_auto_join_audio=true&userdata-bbb_auto_share_webcam=true&userdata-bbb_mirror_own_webcam=true&userdata-bbb_hide_presentation=true"
 
-      query = fullname + join_via_html5 + meeting_id + password
+      query = fullname + join_via_html5 + meeting_id + password + gam_params
       checksum_string = "join#{query + secret}"
 
       checksum = OpenSSL::Digest.digest('sha1', checksum_string).unpack1("H*")
